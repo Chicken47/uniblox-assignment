@@ -1,13 +1,13 @@
 import express from "express";
+import {
+  generateDiscountCode,
+  purchaseStats,
+} from "../handlers/adminHandlers.js";
 
 const router = express.Router();
 
-router.post("/stats", (req, res) => {
-  console.log("stats");
-  res.json({ message: "example" });
-});
+router.post("/generateDiscountCode", generateDiscountCode);
 
-export default (carts) => {
-  router.locals = { carts };
-  return router;
-};
+router.get("/purchaseStats", purchaseStats);
+
+export default router;

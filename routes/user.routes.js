@@ -1,13 +1,19 @@
 import express from "express";
+import {
+  addItemToCart,
+  checkoutItems,
+  deleteItemFromCart,
+  viewCart,
+} from "../handlers/userHandlers.js";
 
 const router = express.Router();
 
-router.post("/cart/add", (req, res) => {
-  console.log("add");
-  res.json({ message: "example" });
-});
+router.post("/cart/add", addItemToCart);
 
-export default (carts) => {
-  router.locals = { carts };
-  return router;
-};
+router.post("/cart/delete", deleteItemFromCart);
+
+router.post("/checkout", checkoutItems);
+
+router.post("/cart/view", viewCart);
+
+export default router;
